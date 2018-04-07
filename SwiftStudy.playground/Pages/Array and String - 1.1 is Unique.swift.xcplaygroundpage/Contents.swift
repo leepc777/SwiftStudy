@@ -18,8 +18,8 @@ func checkUniqueByString(inputString:String) -> Bool {
     }
     return true
 }
-
 checkUniqueByString(inputString: "abccd")
+
 
 func checkUniqueBySort(inputString:String) -> Bool {
     var stringIn  = inputString.sorted()
@@ -31,6 +31,7 @@ func checkUniqueBySort(inputString:String) -> Bool {
             print("\(char) at \(index) hit \(stringIn[index+1]) at \(index+1)")
             return false
         }
+        
 //        let successiveIndex = stringIn.index(stringIn.index(of: char)!, offsetBy: 1)
 //        if char == stringIn[successiveIndex]  {
 //            return false
@@ -39,29 +40,42 @@ func checkUniqueBySort(inputString:String) -> Bool {
     return true
 }
 
-checkUniqueBySort(inputString: "abcd")
+checkUniqueBySort(inputString: "abcdefga")
 
 
-// ================================
+/*
+ ============= convert to Dictionary =====================
 
-extension String {
-    
-    func hasUniqueCharacters() -> Bool {
-        var uniqueCharacters = Set<Character>()
-        for c in characters {
-            guard !uniqueCharacters.contains(c) else { return false }
-            uniqueCharacters.insert(c)
+var stringDic = [String:Int]()
+stringDic["a"] = 0
+stringDic.count
+stringDic["a"] = 1
+
+1. init a Dictionary of Characters with default Nil value
+2. iterate String
+3 if Dic has non nil during iteration, value has been written. Flag duplicate (false ). otherwise, store "0 value
+
+ */
+
+func checkUniqueByDic(inputString: String) -> Bool{
+    var stringIn = inputString
+    var characterDic = [Character:Int]()
+    print(characterDic)
+    for char in stringIn {
+        print("characterDic = \(characterDic)")
+        print(char)
+        if characterDic[char] != nil {
+            print("catch duplicate")
+            return false
         }
-        return true
+        characterDic[char] = 0
     }
-    
-//    func hasUniqueCharactersWithoutAdditionalDataStructs() -> Bool {
-//        if let _ = characters.sorted().successiveElements (where: { $0 == $1 }) {
-//            return false
-//        }
-//        return true
-//    }
-//}
+    print("characterDic = \(characterDic)")
+    return true
+}
+
+checkUniqueByDic(inputString: "abcd")
+
 
 /*
  =================  conver to array =========================
@@ -115,5 +129,16 @@ func checkUniqueBySet(inputString:String) -> Bool {
     }
     return true
 }
-
 checkUniqueBySet(inputString: "abcdd")
+
+
+/*
+=========================  Bits ==========================
+ 
+ 
+ 
+ 
+ */
+
+
+
