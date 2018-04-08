@@ -3,5 +3,6 @@
     <pages>
         <page name='Array and String - 1.1 is Unique.swift'/>
         <page name='Set'/>
+        <page name='Array and String - 1.2 Check Permutation'/>
     </pages>
 </playground>

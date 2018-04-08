@@ -5,13 +5,19 @@ import Foundation
  
  ==============   use index of string =====================
 1. String is a array of Characters. string/array/set all have .contains()
-2. for string, use string.index(of:) to read out String index
+2. for string, use string.index(of:"character") to read out index
 2. String is an array of CHaracters, similar to array iteration.
- for (index,value) in string
+ for (index,value) in string , this index is an Int which is much easier to use.
+ 
+ string.remove(at:string.index(of:"character"))
+ string.endindex .starindex
+ stringIn[stringIn.startIndex] //read out the first character
+
 
  */
 func checkUniqueByString(inputString:String) -> Bool {
     var stringIn = inputString
+    print("read out ",stringIn[stringIn.index(of: "b")!])
     for char in stringIn {
         stringIn.remove(at:stringIn.index(of: char)!)
         if stringIn.contains(char) {return false}
@@ -20,10 +26,8 @@ func checkUniqueByString(inputString:String) -> Bool {
 }
 checkUniqueByString(inputString: "abccd")
 
-
 func checkUniqueBySort(inputString:String) -> Bool {
     var stringIn  = inputString.sorted()
-    
     for (index,char) in stringIn.enumerated() {
         print("\(stringIn.endIndex)")
         guard index < stringIn.endIndex-1 else {return true}
