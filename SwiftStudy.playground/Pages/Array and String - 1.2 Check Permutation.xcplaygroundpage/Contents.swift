@@ -1,7 +1,7 @@
 import Foundation
 
 // 1.2  check if a string is a permutation of another
-
+// a set or number of things can be ordered or arranged.
 func checkPermutation(_ inputStringA:String,_ inputStringB:String) -> Bool {
     
     print(inputStringA,inputStringB)
