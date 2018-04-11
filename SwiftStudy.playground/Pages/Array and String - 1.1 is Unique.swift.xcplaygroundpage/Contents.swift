@@ -15,9 +15,11 @@ import Foundation
 
 
  */
+
+//========== remove a char and check if there is same char in the rest 
 func checkUniqueByString(inputString:String) -> Bool {
     var stringIn = inputString
-    print("read out ",stringIn[stringIn.index(of: "b")!])
+//    print("read out ",stringIn[stringIn.index(of: "b")!])
     for char in stringIn {
         stringIn.remove(at:stringIn.index(of: char)!)
         if stringIn.contains(char) {return false}
@@ -25,6 +27,7 @@ func checkUniqueByString(inputString:String) -> Bool {
     return true
 }
 checkUniqueByString(inputString: "abccd")
+
 
 func checkUniqueBySort(inputString:String) -> Bool {
     var stringIn  = inputString.sorted()
@@ -62,7 +65,7 @@ stringDic["a"] = 1
  */
 
 func checkUniqueByDic(inputString: String) -> Bool{
-    var stringIn = inputString
+    let stringIn = inputString
     var characterDic = [Character:Int]()
     print(characterDic)
     for char in stringIn {

@@ -60,6 +60,7 @@ print(replaceSpaces(inputString:"   can you replace the   spaces with    ?"))
  - .replaceSubrange()
  
 
+*/
 
 func replaceSpacesByTernary(inputString:String) -> String {
     
@@ -78,6 +79,7 @@ func replaceSpacesByIndice(inputString:String) -> String {
     for index in trimString.indices where trimString[index] == " " {
         trimString.replaceSubrange(index...index, with: "%")
     }
+    return "test"
 }
 
- */
+ 
