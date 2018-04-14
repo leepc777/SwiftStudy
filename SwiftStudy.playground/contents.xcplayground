@@ -8,5 +8,6 @@
         <page name='Array and String - 1.4 Palindrome Permuation'/>
         <page name='Array and String - 1.5 One Away'/>
         <page name='Array and String - 1.6 String Compression'/>
+        <page name='Optional'/>
     </pages>
 </playground>
