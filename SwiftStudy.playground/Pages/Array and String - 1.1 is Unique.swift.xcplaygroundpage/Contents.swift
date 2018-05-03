@@ -2,12 +2,13 @@ import Foundation
 
 
 /*
- 
+ 1.1 Determine if a string has all unique characters. What if you can't use additional data structures?
+
  ==============   use index of string =====================
 1. String is a array of Characters. string/array/set all have .contains()
 2. for string, use string.index(of:"character") to read out index
 2. String is an array of CHaracters, similar to array iteration.
- for (index,value) in string , this index is an Int which is much easier to use.
+ for (index,value) in string.enumerated(), this index is an Int which is much easier to use.
  
  string.remove(at:string.index(of:"character"))
  string.endindex .starindex
@@ -28,9 +29,11 @@ func checkUniqueByString(inputString:String) -> Bool {
 }
 checkUniqueByString(inputString: "abccd")
 
-
-func checkUniqueBySort(inputString:String) -> Bool {
-    var stringIn  = inputString.sorted()
+/*===  sort string and convert to an array  ===
+  if the currnet character matching to next one, you have repeated characters.
+*/
+ func checkUniqueBySort(inputString:String) -> Bool {
+    var stringIn  = inputString.sorted() //sort string and convert to an array
     for (index,char) in stringIn.enumerated() {
         print("\(stringIn.endIndex)")
         guard index < stringIn.endIndex-1 else {return true}
