@@ -14,5 +14,8 @@
         <page name='Error Handling'/>
         <page name='Class and Struct'/>
         <page name='Initialization'/>
+        <page name='Integer'/>
+        <page name='Equaltable Comparable'/>
+        <page name='Date'/>
     </pages>
 </playground>

@@ -19,6 +19,7 @@
 
 import Foundation
 
+// this is wrong. compressString didn't get updated when looping inputString
 func stringCompress(inputString:String) -> String {
     var compressedString = String()
     var countDic = [Character:Int]()
@@ -31,6 +32,7 @@ func stringCompress(inputString:String) -> String {
         } else {countDic[char] = 0}
     }
     
+    //
     for (key,value) in countDic {
         compressedString = compressedString+String(key)+String(value)
     }
@@ -96,24 +98,81 @@ print(compressStringFix(inputString: "aabccccc                aaa"))
 
 
 
+// this also fail
+func compressString0(inputString:String?) -> String {
+    inputString?.trimmingCharacters(in: .whitespacesAndNewlines)
+    guard inputString != nil else{return "can't accept NIL"}
+    var preChar:Character = inputString!.first!
+    var count = 1
+    var compressedString = String()
+    for char in inputString! {
+        if char == preChar {
+            count+=1
+        } else { //mismatch, but store before overwriting
+            if preChar != " " { compressedString=compressedString+String(preChar)+String(count) }
+            preChar=char
+            count=1
+        }
+    }
+    return compressedString.count < inputString!.count ? compressedString:inputString!
+}
 
-//func compressString0(inputString:String?) -> String {
-//    inputString?.trimmingCharacters(in: .whitespacesAndNewlines)
-//    guard inputString != nil else{return "can't accept NIL"}
-//    var preChar:Character = inputString!.first!
-//    var count = 1
-//    var compressedString = String()
-//    for char in inputString! {
-//        if char == preChar {
-//            count+=1
-//        } else { //mismatch, but store before overwriting
-//            if preChar != " " { compressedString=compressedString+String(preChar)+String(count) }
-//            preChar=char
-//            count=1
-//        }
-//    }
-//    return compressedString.count < inputString!.count ? compressedString:inputString!
-//}
-//
-//print(compressString0(inputString: ""))
+print(compressString0(inputString: "abcddaa aa aa"))
+
+
+print(" =========  MY Naive Compression ========== ")
+
+extension String {
+    func myNaiveCompress() -> String {
+        var dic = [Character:Int]()
+        var result = String()
+        
+        for c in self {
+            if dic.keys.contains(c) {
+                dic[c] = dic[c]!+1
+            } else {
+                dic[c] = 1
+            }
+        }
+        
+        for (k,v) in dic{
+            result.append(k)
+            result.append(String(v))
+        }
+        return result
+    }
+}
+
+var testString = "abcddaa* aa aa"
+testString.myNaiveCompress()
+
+print("==========  use set ============= ")
+extension String {
+    func naiveCompress() -> String {
+        var newString=String()
+//        let aSet:Set<String> = []
+//        let aSet = Set<String>()
+        let aSet = Set(self)
+        
+        for c in aSet {
+            
+            var count = 0
+            for character in self {
+                if character == c {count=count+1}
+            }
+            newString.append(c)
+            newString.append("\(count)")
+        }
+        
+    return newString
+    }
+}
+
+testString.naiveCompress() // the count is correct but set does not have fixed order
+
+let aa = testString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+print(aa)
+
+testString.trimmingCharacters(in: CharacterSet.punctuationCharacters)
+testString.trimmingCharacters(in: CharacterSet.alphanumerics)
 
